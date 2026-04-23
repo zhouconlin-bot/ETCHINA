@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education | EXTREME THUNDER</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #4F46E5; --primary-light: #7C3AED; --text: #fff; --text-muted: #A5B4FC; --bg: #0F0F1A; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+        nav { position: fixed; top: 0; left: 0; right: 0; height: 72px; background: rgba(15,15,26,0.95); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; justify-content: space-between; padding: 0 60px; border-bottom: 1px solid rgba(124,58,237,0.2); z-index: 1000; }
+        .logo { font-size: 20px; font-weight: 700; letter-spacing: 2px; background: linear-gradient(135deg,#818CF8,#A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; text-decoration: none; }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; }
+        .lang-switch { display: flex; gap: 8px; }
+        .lang-btn { background: transparent; border: 1px solid rgba(124,58,237,0.5); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; }
+        .lang-btn.active { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; border: none; }
+        .back-btn { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; padding: 10px 24px; border-radius: 25px; text-decoration: none; font-size: 14px; }
+        .hero { padding: 160px 60px 100px; text-align: center; background: radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.35) 0%, transparent 60%), var(--bg); }
+        .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg,#FFFFFF,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--text-muted); }
+        .content { padding: 80px 60px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 36px; font-weight: 700; margin-bottom: 40px; }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { background: rgba(124,58,237,0.08); padding: 40px; border-radius: 20px; text-align: center; }
+        .feature-icon { font-size: 48px; margin-bottom: 20px; }
+        .feature-card h3 { font-size: 20px; margin-bottom: 12px; }
+        .feature-card p { color: var(--text-muted); }
+        .course-card { background: rgba(124,58,237,0.05); padding: 40px; border-radius: 20px; margin-bottom: 24px; }
+        .course-card h3 { font-size: 24px; margin-bottom: 10px; }
+        .course-card p { color: var(--text-muted); margin-bottom: 16px; }
+        .course-tags span { display: inline-block; background: rgba(124,58,237,0.2); padding: 6px 16px; border-radius: 20px; font-size: 13px; margin-right: 10px; }
+        .contact-section { padding: 100px 60px; background: linear-gradient(135deg,var(--primary),var(--primary-light)); text-align: center; }
+        .contact-section h2 { font-size: 42px; margin-bottom: 20px; }
+        .contact-btn { display: inline-block; background: white; color: var(--primary); padding: 18px 56px; border-radius: 100px; text-decoration: none; font-weight: 600; }
+        .contact-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0; }
+        .contact-card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 28px 36px; min-width: 200px; transition: 0.3s; }
+        .contact-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+        .contact-card .card-icon { margin-bottom: 10px; }
+        .contact-card .card-label { font-size: 13px; opacity: 0.8; margin-bottom: 6px; }
+        .contact-card .card-value { font-size: 18px; font-weight: 700; }
+        footer { padding: 40px 60px; text-align: center; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(124,58,237,0.1); }
+        @media (max-width: 768px) { .features { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+        <nav>
+        <a href="../index.html" class="logo" style="text-decoration:none;">EXTREME THUNDER</a>
+        <ul class="nav-links">
+            <li><a href="../index.html" class="lang-text" data-zh="首页" data-en="Home">Home</a></li>
+        </ul>
+        <div class="lang-switch" style="margin-right:20px; margin-left:auto;">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('zh')">中</button>
+        </div>
+        <a href="../index.html" class="back-btn lang-text" data-zh="← 返回" data-en="← Back">← Back</a>
+    </nav>
+    <section class="hero">
+        <h1 class="lang-text" data-zh="研学活动" data-en="Education Programs">Education Programs</h1>
+        <p class="lang-text" data-zh="爱国主义教育与趣味体育活动结合" data-en="Patriotism education combined with fun physical activities">Patriotism + Fun</p>
+    </section>
+    <section class="content">
+        <h2 class="section-title lang-text" data-zh="为什么选择研学？" data-en="Why Education?">Why Education?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div style="background:linear-gradient(135deg,#EC4899,#F472B6);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+                <h3 class="lang-text" data-zh="爱国主义" data-en="Patriotism">Patriotism</h3>
+                <p class="lang-text" data-zh="学习国防知识，尊敬英雄" data-en="Learn about national defense, respect heroes">Learn & Respect</p>
+            </div>
+            <div class="feature-card">
+                <div style="background:linear-gradient(135deg,#10B981,#34D399);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="5" r="3"/><path d="M19 8l-5 5-4-4-3 3"/></svg></div>
+                <h3 class="lang-text" data-zh="体育锻炼" data-en="Fitness">Fitness</h3>
+                <p class="lang-text" data-zh="体育锻炼，培养团队精神" data-en="Physical exercise, develop teamwork">Exercise & Team</p>
+            </div>
+            <div class="feature-card">
+                <div style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2a10 10 0 1010 10 4 4 0 01-5-5 4 4 0 01-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/></svg></div>
+                <h3 class="lang-text" data-zh="策略思维" data-en="Strategy">Strategy</h3>
+                <p class="lang-text" data-zh="战术思维，决策能力" data-en="Tactical thinking, decision making">Think & Decide</p>
+            </div>
+        </div>
+        <h2 class="section-title lang-text" data-zh="课程项目" data-en="Programs" style="margin-top:60px;">Programs</h2>
+        <div class="course-card">
+            <h3 class="lang-text" data-zh="小小士兵" data-en="Little Soldiers">Little Soldiers</h3>
+            <p class="lang-text" data-zh="适合6-12岁。军事生活入门和基础战术。" data-en="For ages 6-12. Introduction to military life and basic tactics.">Ages 6-12</p>
+            <div class="course-tags"><span class="lang-text" data-zh="6-12岁" data-en="Ages 6-12">Ages 6-12</span><span class="lang-text" data-zh="半日" data-en="Half Day">Half Day</span></div>
+        </div>
+        <div class="course-card">
+            <h3 class="lang-text" data-zh="少年战士" data-en="Junior Warriors">Junior Warriors</h3>
+            <p class="lang-text" data-zh="适合12-18岁。高级战术和团队行动。" data-en="For ages 12-18. Advanced tactics and team operations.">Ages 12-18</p>
+            <div class="course-tags"><span class="lang-text" data-zh="12-18岁" data-en="Ages 12-18">Ages 12-18</span><span class="lang-text" data-zh="全日" data-en="Full Day">Full Day</span></div>
+        </div>
+        <div class="course-card">
+            <h3 class="lang-text" data-zh="军事体验" data-en="Military Experience">Military Experience</h3>
+            <p class="lang-text" data-zh="沉浸式军事训练模拟" data-en="Immersive military training simulation">All Ages</p>
+            <div class="course-tags"><span class="lang-text" data-zh="全部年龄" data-en="All Ages">All Ages</span><span class="lang-text" data-zh="定制" data-en="Custom">Custom</span></div>
+        </div>
+    </section>
+    <section class="contact-section" id="contact">
+        <h2 class="lang-text" data-zh="联系我们" data-en="Contact Us">Contact Us</h2>
+        <p class="lang-text" data-zh="开启您的镭射之旅" data-en="Start Your Laser Tag Journey">Start Your Laser Tag Journey</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="card-label">电话</div>
+            <div class="card-value"><a href="tel:13761880006" style="color:white;text-decoration:none;">137 6188 0006</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div class="card-label">微信</div>
+            <div class="card-value">ET-HANGZHOU</div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="card-label">邮箱</div>
+            <div class="card-value" style="font-size:15px;">extremethunder@qq.com</div>
+          </div>
+        </div>
+    </section>
+    <footer><p>© 2026 EXTREME THUNDER | Hangzhou Jiting Culture & Sports Co., Ltd.</p></footer>
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+            document.querySelectorAll('.lang-text').forEach(el => {
+                if (lang === 'en' && el.dataset.en) el.textContent = el.dataset.en;
+                else if (lang === 'zh' && el.dataset.zh) el.textContent = el.dataset.zh;
+            });
+        }
+    </script>
+</body>
+</html>

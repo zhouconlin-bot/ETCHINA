@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXTREME THUNDER | 极霆镭射射击公园</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        :root { --primary: #4F46E5; --primary-light: #7C3AED; --text: #fff; --text-muted: #A5B4FC; --bg: #0F0F1A; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+        
+        nav { position: fixed; top: 0; left: 0; right: 0; height: 72px; background: rgba(15,15,26,0.95); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; border-bottom: 1px solid rgba(124,58,237,0.2); z-index: 1000; }
+        .logo { font-size: 20px; font-weight: 700; letter-spacing: 2px; background: linear-gradient(135deg,#818CF8,#A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        
+        .nav-center { display: flex; gap: 40px; justify-content: center; flex: 1; margin: 0 20px; list-style: none; }
+        .nav-center a { color: var(--text-muted); text-decoration: none; font-size: 14px; }
+        .nav-center a:hover { color: #fff; }
+        
+        .lang-switch { display: flex; gap: 8px; }
+        .lang-btn { background: transparent; border: 1px solid rgba(124,58,237,0.3); color: var(--text-muted); padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; }
+        .lang-btn.active { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; border: none; }
+
+        .hero { padding: 180px 60px 120px; text-align: center; background: radial-gradient(ellipse at 30% 20%, rgba(124,58,237,0.3) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(79,70,229,0.3) 0%, transparent 50%), linear-gradient(180deg,#0F0F1A 0%, #1a1a2e 100%); }
+        .hero h1 { font-size: 64px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; background: linear-gradient(135deg,#fff,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        .stats { display: flex; justify-content: center; gap: 60px; margin-top: 40px; }
+        .stat-item { text-align: center; }
+        .stat-num { font-size: 36px; font-weight: 700; background: linear-gradient(135deg,#818CF8,#A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-label { font-size: 14px; color: var(--text-muted); }
+
+        .features, .services, .about, .advantages { padding: 100px 60px; background: var(--bg); }
+        .section-title { font-size: 40px; font-weight: 700; text-align: center; margin-bottom: 20px; background: linear-gradient(135deg,#fff,#A5B4FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 50px; }
+
+        .feature-grid, .service-grid, .advantage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+        .feature-item, .service-card, .advantage-item { text-align: center; padding: 28px 24px; background: rgba(124,58,237,0.08); border-radius: 16px; border: 1px solid rgba(124,58,237,0.15); transition: 0.3s; }
+        .advantage-item .adv-num { font-size: 42px; font-weight: 800; background: linear-gradient(135deg,#818CF8,#A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 12px; }
+        .advantage-item h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; color: var(--text); }
+        .advantage-item p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+        .feature-item:hover { transform: translateY(-5px); background: rgba(124,58,237,0.15); }
+        
+        .feature-icon { background: linear-gradient(135deg,#6366F1,#8B5CF6); width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+        .feature-icon svg { width: 26px; height: 26px; stroke: white; stroke-width: 2; fill: none; }
+        
+        .feature-item h3 { font-size: 18px; margin-bottom: 10px; }
+        .feature-item p { font-size: 13px; color: var(--text-muted); }
+        .service-link { color: #A5B4FC; text-decoration: none; font-size: 14px; }
+
+        .services, .advantages { background: radial-gradient(ellipse at 50% 100%, rgba(124,58,237,0.15) 0%, transparent 50%), var(--bg); }
+        .about p { text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-muted); line-height: 1.8; }
+
+        .stores { padding: 80px 60px; }
+        .store-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 600px; margin: 0 auto; }
+        .store-card { background: rgba(124,58,237,0.08); padding: 20px; border-radius: 14px; }
+        .store-name { font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+        .store-addr { font-size: 12px; color: var(--text-muted); }
+        .store-status { display: inline-block; font-size: 11px; padding: 4px 10px; border-radius: 10px; margin-top: 10px; }
+        .store-status.active { background: rgba(34,197,94,0.2); color: #22C55E; }
+        .store-status.preparing { background: rgba(251,191,36,0.2); color: #FBBF24; }
+
+        .contact { padding: 100px 60px; background: linear-gradient(135deg,var(--primary),var(--primary-light)); text-align: center; }
+        .contact h2 { font-size: 40px; margin-bottom: 12px; }
+        .contact-sub { font-size: 18px; opacity: 0.9; margin-bottom: 50px; }
+        .contact-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .contact-card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 28px 36px; min-width: 200px; transition: 0.3s; }
+        .contact-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+        .contact-card .card-icon { font-size: 32px; margin-bottom: 10px; }
+        .contact-card .card-label { font-size: 13px; opacity: 0.8; margin-bottom: 6px; }
+        .contact-card .card-value { font-size: 18px; font-weight: 700; }
+        .contact-info { font-size: 15px; opacity: 0.75; }
+
+        footer { padding: 30px; text-align: center; color: var(--text-muted); font-size: 13px; border-top: 1px solid rgba(124,58,237,0.1); }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 20px; }
+            .hero { padding: 140px 20px 80px; }
+            .hero h1 { font-size: 36px; }
+            .stats { flex-direction: column; gap: 20px; }
+            .feature-grid, .service-grid, .advantage-grid, .store-grid { grid-template-columns: 1fr; }
+            .nav-center { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">EXTREME THUNDER</a>
+        <ul class="nav-center">
+            <li><a href="#features" class="lang-text" data-zh="特色" data-en="Features">Features</a></li>
+            <li><a href="#advantages" class="lang-text" data-zh="优势" data-en="Advantages">Advantages</a></li>
+            <li><a href="#services" class="lang-text" data-zh="服务" data-en="Services">Services</a></li>
+            <li><a href="services/customer-service.html" class="lang-text" data-zh="客服" data-en="Support">Support</a></li>
+            <li><a href="#stores" class="lang-text" data-zh="门店" data-en="Stores">Stores</a></li>
+            <li><a href="#contact" class="lang-text" data-zh="联系" data-en="Contact">Contact</a></li>
+        </ul>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('zh')">中</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="lang-text" data-zh="极霆镭射射击公园" data-en="EXTREME THUNDER">EXTREME THUNDER</h1>
+        <p class="lang-text" data-zh="实弹射击模拟系统" data-en="Real Combat Simulation System">Real Combat Simulation System</p>
+        <div class="stats">
+            <div class="stat-item"><div class="stat-num">5万+</div><div class="stat-label lang-text" data-zh="累计玩家" data-en="Players">Players</div></div>
+            <div class="stat-item"><div class="stat-num">38%</div><div class="stat-label lang-text" data-zh="复购率" data-en="Rebuy Rate">Rebuy Rate</div></div>
+            <div class="stat-item"><div class="stat-num">6</div><div class="stat-label lang-text" data-zh="主题场景" data-en="Themes">Themes</div></div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title lang-text" data-zh="核心特色" data-en="Core Features">Core Features</h2>
+        <p class="section-subtitle lang-text" data-zh="激光感应技术，安全环保" data-en="Laser Sensing Technology, Safe & Eco">Laser technology</p>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="10" height="10" rx="1"/></svg></div>
+                <h3 class="lang-text" data-zh="模块化设计" data-en="Modular Design">Modular Design</h3>
+                <p class="lang-text" data-zh="集装箱模块化" data-en="Container Modular Design">Container modular</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon" style="background:linear-gradient(135deg,#EC4899,#F472B6)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                <h3 class="lang-text" data-zh="多重主题" data-en="Multiple Themes">X Themes</h3>
+                <p class="lang-text" data-zh="多重主题" data-en="Multiple Themes">Multiple themes</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon" style="background:linear-gradient(135deg,#10B981,#34D399)"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+                <h3 class="lang-text" data-zh="智能计分" data-en="Smart Scoring">Smart Scoring</h3>
+                <p class="lang-text" data-zh="实时成绩显示" data-en="Real-time Score Display">Real-time scoring</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon" style="background:linear-gradient(135deg,#3B82F6,#60A5FA)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <h3 class="lang-text" data-zh="安全环保" data-en="Safe & Eco">Safe & Eco</h3>
+                <p class="lang-text" data-zh="无实体子弹" data-en="No Real Bullets">No bullets</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA)"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
+                <h3 class="lang-text" data-zh="数据同步" data-en="Data Sync">Data Sync</h3>
+                <p class="lang-text" data-zh="手机APP查看" data-en="Mobile APP Access">Mobile APP</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon" style="background:linear-gradient(135deg,#F59E0B,#FBBF24)"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 010-5H6M18 9h1.5a2.5 2.5 0 000-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/></svg></div>
+                <h3 class="lang-text" data-zh="排行榜" data-en="Leaderboard">Leaderboard</h3>
+                <p class="lang-text" data-zh="实时排名" data-en="Real-time Ranking">Ranking</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages" id="advantages">
+        <h2 class="section-title lang-text" data-zh="我们的优势" data-en="Our Advantages">Our Advantages</h2>
+        <p class="section-subtitle lang-text" data-zh="15年行业经验" data-en="15 Years Industry Experience">15 Years Industry Experience</p>
+        <div class="advantage-grid">
+            <div class="advantage-item"><div class="adv-num">01</div><h3 class="lang-text" data-zh="2~4个月回本" data-en="2-4 Months ROI">2-4 Months ROI</h3><p class="lang-text" data-zh="真实数据支撑，科学测算" data-en="Data-backed, scientific calculation">Data-backed ROI</p></div>
+            <div class="advantage-item"><div class="adv-num">02</div><h3 class="lang-text" data-zh="已验证的商业模式" data-en="Proven Business Model">Proven Business Model</h3><p class="lang-text" data-zh="武林秘盒运营验证，5万+人次" data-en="Wulin Magic Box, 50,000+ users">Wulin Magic Box, 50K+ users</p></div>
+            <div class="advantage-item"><div class="adv-num">03</div><h3 class="lang-text" data-zh="全程无忧整店输出" data-en="Turnkey Solution">Turnkey Solution</h3><p class="lang-text" data-zh="从选址到运营，一站式扶持" data-en="Site selection to operation">Site selection to operation</p></div>
+            <div class="advantage-item"><div class="adv-num">04</div><h3 class="lang-text" data-zh="多场景变现" data-en="Multi-channel Revenue">Multi-channel Revenue</h3><p class="lang-text" data-zh="企业团建/青少年培训/文旅景区" data-en="Corporate/Youth/Tourism">Corporate/Youth/Tourism</p></div>
+            <div class="advantage-item"><div class="adv-num">05</div><h3 class="lang-text" data-zh="源头工厂直供" data-en="Factory Direct">Factory Direct</h3><p class="lang-text" data-zh="设备+系统一体化，品控有保障" data-en="Integrated hardware &amp; system">Integrated hardware &amp; system</p></div>
+            <div class="advantage-item"><div class="adv-num">06</div><h3 class="lang-text" data-zh="数据化管理" data-en="Data Management">Data Management</h3><p class="lang-text" data-zh="小程序+财务系统+CRM一体化" data-en="Mini program + Finance + CRM">Mini program + Finance + CRM</p></div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title lang-text" data-zh="服务项目" data-en="Services">Services</h2>
+        <div class="service-grid">
+            <div class="service-card"><h3 class="lang-text" data-zh="设备销售" data-en="Equipment Sales">Equipment Sales</h3><p class="lang-text" data-zh="专业设备方案" data-en="Professional Equipment Solutions">Professional equipment solutions</p><a href="services/equipment.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+            <div class="service-card"><h3 class="lang-text" data-zh="赛事举办" data-en="Events">Events</h3><p class="lang-text" data-zh="专业裁判团队" data-en="Professional Judge Team">Professional judges</p><a href="services/events.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+            <div class="service-card"><h3 class="lang-text" data-zh="团建活动" data-en="Team Building">Team Building</h3><p class="lang-text" data-zh="企业团建" data-en="Corporate Team Building">Corporate team building</p><a href="services/team.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+            <div class="service-card"><h3 class="lang-text" data-zh="研学活动" data-en="Education">Education</h3><p class="lang-text" data-zh="爱国主义教育" data-en="Patriotism Education">Patriotism education</p><a href="services/education.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+            <div class="service-card"><h3 class="lang-text" data-zh="军警训练" data-en="Military Training">Military Training</h3><p class="lang-text" data-zh="专业训练系统" data-en="Professional Training System">Professional training system</p><a href="services/military.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+            <div class="service-card"><h3 class="lang-text" data-zh="加盟合作" data-en="Franchise">Franchise</h3><p class="lang-text" data-zh="整店输出" data-en="Full Store Setup">Full store setup</p><a href="services/franchise.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+            <div class="service-card"><h3 class="lang-text" data-zh="客户服务" data-en="Support">Support</h3><p class="lang-text" data-zh="全方位服务支持" data-en="Full service support">Full service support</p><a href="services/customer-service.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+            <div class="service-card"><h3 class="lang-text" data-zh="技术培训" data-en="Technical Training">Technical Training</h3><p class="lang-text" data-zh="设备操作+维护培训" data-en="Equipment operation & maintenance">Equipment operation & maintenance</p><a href="services/training.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+            <div class="service-card"><h3 class="lang-text" data-zh="主题活动策划" data-en="Event Planning">Event Planning</h3><p class="lang-text" data-zh="生日派对/学校/企业专题活动" data-en="Birthday parties, school & corporate events">Birthday, school & corporate events</p><a href="services/events-planning.html" class="service-link lang-text" data-zh="了解详情 →" data-en="Learn More →">Learn More →</a></div>
+        </div>
+    </section>
+
+    <section class="stores" id="stores">
+        <h2 class="section-title lang-text" data-zh="门店网络" data-en="Store Network">Store Network</h2>
+        <div class="store-grid">
+            <div class="store-card"><div class="store-name lang-text" data-zh="武林夜市（武林秘盒）" data-en="Wulin Night Market">武林夜市（武林秘盒）</div><div class="store-addr lang-text" data-zh="杭州市拱墅区武林路浙江文化馆对面" data-en="Wulin Road, Gongshu District, Hangzhou">杭州拱墅区</div><span class="store-status active lang-text" data-zh="运营中" data-en="Operating">Operating</span></div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="lang-text" data-zh="联系我们" data-en="Contact Us">Contact Us</h2>
+        <p class="contact-sub lang-text" data-zh="开启您的镭射之旅" data-en="Start Your Laser Tag Journey">Start Your Laser Tag Journey</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="card-label">电话</div>
+            <div class="card-value"><a href="tel:13761880006" style="color:white;text-decoration:none;">137 6188 0006</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div class="card-label">微信</div>
+            <div class="card-value">ET-HANGZHOU</div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="card-label">邮箱</div>
+            <div class="card-value" style="font-size:15px;">extremethunder@qq.com</div>
+          </div>
+        </div>
+        <p class="contact-info">杭州极霆文化体育有限公司</p>
+    </section>
+
+    <footer><p class="lang-text" data-zh="© 2026 极霆镭射 | 杭州极霆文化体育有限公司" data-en="© 2026 EXTREME THUNDER | Hangzhou Jiting Culture & Sports Co., Ltd.">© 2026 EXTREME THUNDER | Hangzhou Jiting Culture & Sports Co., Ltd.</p></footer>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+            document.querySelectorAll('.lang-text').forEach(el => {
+                if (lang === 'en' && el.dataset.en) el.textContent = el.dataset.en;
+                else if (lang === 'zh' && el.dataset.zh) el.textContent = el.dataset.zh;
+            });
+        }
+        setLang('en');
+    </script>
+</body>
+</html>

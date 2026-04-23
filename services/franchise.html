@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franchise | EXTREME THUNDER</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #4F46E5; --primary-light: #7C3AED; --text: #fff; --text-muted: #A5B4FC; --bg: #0F0F1A; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+        nav { position: fixed; top: 0; left: 0; right: 0; height: 72px; background: rgba(15,15,26,0.95); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; justify-content: space-between; padding: 0 60px; border-bottom: 1px solid rgba(124,58,237,0.2); z-index: 1000; }
+        .logo { font-size: 20px; font-weight: 700; letter-spacing: 2px; background: linear-gradient(135deg,#818CF8,#A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; }
+        .lang-switch { display: flex; gap: 8px; }
+        .lang-btn { background: transparent; border: 1px solid rgba(124,58,237,0.5); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; }
+        .lang-btn.active { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; border: none; }
+        .back-btn { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; padding: 10px 24px; border-radius: 25px; text-decoration: none; font-size: 14px; }
+        .hero { padding: 160px 60px 100px; text-align: center; background: radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.35) 0%, transparent 60%), var(--bg); }
+        .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg,#FFFFFF,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--text-muted); }
+        .content { padding: 80px 60px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 36px; font-weight: 700; margin-bottom: 40px; }
+        .benefits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .benefit-card { background: rgba(124,58,237,0.08); padding: 32px; border-radius: 20px; text-align: center; }
+        .benefit-icon { font-size: 40px; margin-bottom: 16px; }
+        .benefit-card h3 { font-size: 18px; margin-bottom: 10px; }
+        .benefit-card p { font-size: 14px; color: var(--text-muted); }
+        .support-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 60px; }
+        .support-card { background: rgba(124,58,237,0.05); padding: 40px; border-radius: 20px; }
+        .support-card h3 { font-size: 22px; margin-bottom: 20px; }
+        .support-card ul { list-style: none; }
+        .support-card li { padding: 10px 0; color: var(--text-muted); border-bottom: 1px solid rgba(124,58,237,0.1); }
+        .support-card li::before { content: "✓"; color: #22C55E; margin-right: 10px; }
+        .conditions { margin-top: 60px; background: rgba(124,58,237,0.08); padding: 50px; border-radius: 24px; }
+        .conditions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .condition h4 { font-size: 20px; margin-bottom: 16px; color: #A5B4FC; }
+        .condition li { padding: 8px 0; color: var(--text-muted); list-style: none; }
+        .condition li::before { content: "•"; color: var(--primary-light); margin-right: 10px; }
+        .contact-section { padding: 100px 60px; background: linear-gradient(135deg,var(--primary),var(--primary-light)); text-align: center; }
+        .contact-section h2 { font-size: 42px; margin-bottom: 20px; }
+        .contact-btn { display: inline-block; background: white; color: var(--primary); padding: 18px 56px; border-radius: 100px; text-decoration: none; font-weight: 600; }
+        .contact-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0; }
+        .contact-card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 28px 36px; min-width: 200px; transition: 0.3s; }
+        .contact-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+        .contact-card .card-icon { margin-bottom: 10px; }
+        .contact-card .card-label { font-size: 13px; opacity: 0.8; margin-bottom: 6px; }
+        .contact-card .card-value { font-size: 18px; font-weight: 700; }
+        footer { padding: 40px 60px; text-align: center; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(124,58,237,0.1); }
+        @media (max-width: 768px) { .benefits, .support-grid, .conditions-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+        <nav>
+        <a href="../index.html" class="logo" style="text-decoration:none;">EXTREME THUNDER</a>
+        <ul class="nav-links">
+            <li><a href="../index.html" class="lang-text" data-zh="首页" data-en="Home">Home</a></li>
+        </ul>
+        <div class="lang-switch" style="margin-right:20px; margin-left:auto;">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('zh')">中</button>
+        </div>
+        <a href="../index.html" class="back-btn lang-text" data-zh="← 返回" data-en="← Back">← Back</a>
+    </nav>
+    <section class="hero">
+        <h1 class="lang-text" data-zh="加盟合作" data-en="Franchise">Franchise</h1>
+        <p class="lang-text" data-zh="加入领先的镭射射击品牌。整店输出，全程扶持。" data-en="Join the leading laser tag brand. Turnkey solution, full support.">Join EXTREME THUNDER</p>
+    </section>
+    <section class="content">
+        <h2 class="section-title lang-text" data-zh="为什么加盟？" data-en="Why Franchise?">Why Franchise?</h2>
+        <div class="benefits">
+            <div class="benefit-card">
+                <div class="benefit-icon">🏭</div>
+                <h3 class="lang-text" data-zh="工厂直供" data-en="Factory Direct">Factory Direct</h3>
+                <p class="lang-text" data-zh="自有工厂设备" data-en="Equipment from our own factory">Own factory</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📱</div>
+                <h3 class="lang-text" data-zh="会员系统" data-en="Member System">Member System</h3>
+                <p class="lang-text" data-zh="微信小程序会员" data-en="Ready-to-use WeChat mini-program">WeChat member</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3 class="lang-text" data-zh="财务自动化" data-en="Financial Auto">Financial Auto</h3>
+                <p class="lang-text" data-zh="收入自动追踪" data-en="Automated revenue tracking">Auto tracking</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🛠️</div>
+                <h3 class="lang-text" data-zh="IoT支持" data-en="IoT Support">IoT Support</h3>
+                <p class="lang-text" data-zh="智能设备监控" data-en="Smart equipment monitoring">Smart monitoring</p>
+            </div>
+        </div>
+        <div class="support-grid">
+            <div class="support-card">
+                <h3 class="lang-text" data-zh="开业支持" data-en="Pre-Opening">Pre-Opening</h3>
+                <ul>
+                    <li class="lang-text" data-zh="选址评估" data-en="Location assessment">Location assessment</li>
+                    <li class="lang-text" data-zh="店铺设计" data-en="Store design & layout">Store design</li>
+                    <li class="lang-text" data-zh="设备供应" data-en="Equipment supply">Equipment supply</li>
+                    <li class="lang-text" data-zh="人员招聘" data-en="Staff recruitment">Staff recruitment</li>
+                    <li class="lang-text" data-zh="初期培训" data-en="Initial training">Initial training</li>
+                </ul>
+            </div>
+            <div class="support-card">
+                <h3 class="lang-text" data-zh="运营支持" data-en="Operations">Operations</h3>
+                <ul>
+                    <li class="lang-text" data-zh="营销物料" data-en="Marketing materials">Marketing materials</li>
+                    <li class="lang-text" data-zh="运营手册" data-en="Operating manuals">Operating manuals</li>
+                    <li class="lang-text" data-zh="CRM系统" data-en="CRM system access">CRM system</li>
+                    <li class="lang-text" data-zh="设备维护" data-en="Equipment maintenance">Equipment maintenance</li>
+                    <li class="lang-text" data-zh="定期培训" data-en="Regular training updates">Training updates</li>
+                </ul>
+            </div>
+        </div>
+        <div class="conditions">
+            <h2 class="section-title lang-text" data-zh="加盟条件" data-en="Franchise Conditions">Franchise Conditions</h2>
+            <div class="conditions-grid">
+                <div class="condition">
+                    <h4 class="lang-text" data-zh="套餐选择" data-en="Package Options">Package Options</h4>
+                    <ul>
+                        <li>套餐A（轻量版）：¥68,000 · 适合小型门店</li>
+                        <li>套餐B（完整版）：¥370,000 · 适合标准门店</li>
+                        <li>面积：150-300㎡（最小150㎡）</li>
+                        <li>位置：商业综合体/文旅景区/校园</li>
+                    </ul>
+                </div>
+                <div class="condition">
+                    <h4 class="lang-text" data-zh="流程" data-en="Process">Process</h4>
+                    <ul>
+                        <li class="lang-text" data-zh="提交申请" data-en="Submit application">Submit application</li>
+                        <li class="lang-text" data-zh="审核面试" data-en="Review & interview">Review & interview</li>
+                        <li class="lang-text" data-zh="实地考察" data-en="Site visit">Site visit</li>
+                        <li class="lang-text" data-zh="签订合同" data-en="Sign contract">Sign contract</li>
+                        <li class="lang-text" data-zh="培训开业" data-en="Training & opening">Training & opening</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-section" id="contact">
+        <h2 class="lang-text" data-zh="联系我们" data-en="Contact Us">Contact Us</h2>
+        <p class="lang-text" data-zh="开启您的镭射之旅" data-en="Start Your Laser Tag Journey">Start Your Laser Tag Journey</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="card-label">电话</div>
+            <div class="card-value"><a href="tel:13761880006" style="color:white;text-decoration:none;">137 6188 0006</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div class="card-label">微信</div>
+            <div class="card-value">ET-HANGZHOU</div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="card-label">邮箱</div>
+            <div class="card-value" style="font-size:15px;">extremethunder@qq.com</div>
+          </div>
+        </div>
+    </section>
+    <footer><p>© 2026 EXTREME THUNDER | Hangzhou Jiting Culture & Sports Co., Ltd.</p></footer>
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+            document.querySelectorAll('.lang-text').forEach(el => {
+                if (lang === 'en' && el.dataset.en) el.textContent = el.dataset.en;
+                else if (lang === 'zh' && el.dataset.zh) el.textContent = el.dataset.zh;
+            });
+        }
+    </script>
+</body>
+</html>

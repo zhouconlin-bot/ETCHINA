@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Training | EXTREME THUNDER</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #4F46E5; --primary-light: #7C3AED; --text: #fff; --text-muted: #A5B4FC; --bg: #0F0F1A; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+        nav { position: fixed; top: 0; left: 0; right: 0; height: 72px; background: rgba(15,15,26,0.95); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 60px; border-bottom: 1px solid rgba(124,58,237,0.2); z-index: 1000; }
+        .logo { font-size: 20px; font-weight: 700; letter-spacing: 2px; background: linear-gradient(135deg,#818CF8,#A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; text-decoration: none; }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; }
+        .lang-switch { display: flex; gap: 8px; }
+        .lang-btn { background: transparent; border: 1px solid rgba(124,58,237,0.5); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; }
+        .lang-btn.active { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; border: none; }
+        .back-btn { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; padding: 10px 24px; border-radius: 25px; text-decoration: none; font-size: 14px; }
+        .hero { padding: 160px 60px 100px; text-align: center; background: radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.35) 0%, transparent 60%), var(--bg); }
+        .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg,#FFFFFF,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--text-muted); }
+        .content { padding: 80px 60px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 36px; font-weight: 700; margin-bottom: 40px; }
+        .training-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .training-card { background: rgba(124,58,237,0.08); padding: 40px; border-radius: 20px; }
+        .training-card h3 { font-size: 22px; margin-bottom: 16px; }
+        .training-card ul { list-style: none; }
+        .training-card li { color: var(--text-muted); padding: 8px 0; border-bottom: 1px solid rgba(124,58,237,0.1); }
+        .training-card li:last-child { border-bottom: none; }
+        .pricing-card { background: rgba(124,58,237,0.05); padding: 40px; border-radius: 20px; margin-top: 60px; display: flex; justify-content: space-between; align-items: center; }
+        .pricing-info h3 { font-size: 24px; margin-bottom: 10px; }
+        .pricing-info p { color: var(--text-muted); }
+        .pricing-price { font-size: 32px; font-weight: 700; color: #A5B4FC; }
+        .contact-section { padding: 100px 60px; background: linear-gradient(135deg,var(--primary),var(--primary-light)); text-align: center; }
+        .contact-section h2 { font-size: 42px; margin-bottom: 20px; }
+        .contact-section p { font-size: 18px; opacity: 0.9; margin-bottom: 40px; }
+        .contact-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0; }
+        .contact-card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 28px 36px; min-width: 200px; transition: 0.3s; }
+        .contact-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+        .contact-card .card-icon { margin-bottom: 10px; }
+        .contact-card .card-label { font-size: 13px; opacity: 0.8; margin-bottom: 6px; }
+        .contact-card .card-value { font-size: 18px; font-weight: 700; }
+        footer { padding: 40px 60px; text-align: center; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(124,58,237,0.1); }
+        @media (max-width: 768px) { .training-grid, .pricing-card { grid-template-columns: 1fr; flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="logo" style="text-decoration:none;">EXTREME THUNDER</a>
+        <ul class="nav-links">
+            <li><a href="../index.html" class="lang-text" data-zh="首页" data-en="Home">Home</a></li>
+        </ul>
+        <div class="lang-switch" style="margin-right:20px; margin-left:auto;">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('zh')">中</button>
+        </div>
+        <a href="../index.html" class="back-btn lang-text" data-zh="← 返回" data-en="← Back">← Back</a>
+    </nav>
+    <section class="hero">
+        <h1 class="lang-text" data-zh="技术培训" data-en="Technical Training">Technical Training</h1>
+        <p class="lang-text" data-zh="设备操作与维护全面培训" data-en="Comprehensive equipment operation & maintenance training">Comprehensive training</p>
+    </section>
+    <section class="content">
+        <h2 class="section-title lang-text" data-zh="培训内容" data-en="Training Content">Training Content</h2>
+        <div class="training-grid">
+            <div class="training-card">
+                <h3 class="lang-text" data-zh="操作培训" data-en="Operation Training">Operation Training</h3>
+                <ul>
+                    <li class="lang-text" data-zh="设备开关机流程" data-en="Equipment startup & shutdown">Equipment startup & shutdown</li>
+                    <li class="lang-text" data-zh="游戏模式设置" data-en="Game mode settings">Game mode settings</li>
+                    <li class="lang-text" data-zh="记分系统操作" data-en="Scoring system operation">Scoring system operation</li>
+                    <li class="lang-text" data-zh="突发情况处理" data-en="Emergency handling">Emergency handling</li>
+                </ul>
+            </div>
+            <div class="training-card">
+                <h3 class="lang-text" data-zh="维护培训" data-en="Maintenance Training">Maintenance Training</h3>
+                <ul>
+                    <li class="lang-text" data-zh="日常清洁保养" data-en="Daily cleaning & care">Daily cleaning & care</li>
+                    <li class="lang-text" data-zh="常见故障排查" data-en="Common fault troubleshooting">Common fault troubleshooting</li>
+                    <li class="lang-text" data-zh="配件更换教程" data-en="Parts replacement guide">Parts replacement guide</li>
+                    <li class="lang-text" data-zh="软件升级操作" data-en="Software update procedures">Software update procedures</li>
+                </ul>
+            </div>
+        </div>
+        <div class="pricing-card">
+            <div class="pricing-info">
+                <h3 class="lang-text" data-zh="培训费用" data-en="Training Fee">Training Fee</h3>
+                <p class="lang-text" data-zh="包含在设备套餐内" data-en="Included with equipment package">Included with equipment package</p>
+            </div>
+            <div class="pricing-price lang-text" data-zh="免费" data-en="Free">Free</div>
+        </div>
+    </section>
+    <section class="contact-section" id="contact">
+        <h2 class="lang-text" data-zh="联系我们" data-en="Contact Us">Contact Us</h2>
+        <p class="lang-text" data-zh="开启您的镭射之旅" data-en="Start Your Laser Tag Journey">Start Your Laser Tag Journey</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="card-label">电话</div>
+            <div class="card-value"><a href="tel:13761880006" style="color:white;text-decoration:none;">137 6188 0006</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div class="card-label">微信</div>
+            <div class="card-value">ET-HANGZHOU</div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="card-label">邮箱</div>
+            <div class="card-value" style="font-size:15px;">extremethunder@qq.com</div>
+          </div>
+        </div>
+    </section>
+    <footer><p>© 2026 EXTREME THUNDER | Hangzhou Jiting Culture & Sports Co., Ltd.</p></footer>
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+            document.querySelectorAll('.lang-text').forEach(el => {
+                if (lang === 'en' && el.dataset.en) el.textContent = el.dataset.en;
+                else if (lang === 'zh' && el.dataset.zh) el.textContent = el.dataset.zh;
+            });
+        }
+    </script>
+</body>
+</html>

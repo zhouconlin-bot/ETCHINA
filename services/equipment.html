@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Sales | EXTREME THUNDER</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #4F46E5; --primary-light: #7C3AED; --text: #fff; --text-muted: #A5B4FC; --bg: #0F0F1A; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+        
+        nav { position: fixed; top: 0; left: 0; right: 0; height: 72px; background: rgba(15,15,26,0.95); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 60px; border-bottom: 1px solid rgba(124,58,237,0.2); z-index: 1000; }
+        .logo { font-size: 20px; font-weight: 700; letter-spacing: 2px; background: linear-gradient(135deg,#818CF8,#A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; }
+        .back-btn { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; padding: 10px 24px; border-radius: 25px; text-decoration: none; font-size: 14px; }
+        
+        .lang-switch { display: flex; gap: 8px; }
+        .lang-btn { background: transparent; border: 1px solid rgba(124,58,237,0.5); color: var(--text-muted); padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; margin-left: 10px; }
+        .lang-btn.active { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; border: none; }
+
+        .hero { padding: 160px 60px 100px; text-align: center; background: radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.35) 0%, transparent 60%), var(--bg); }
+        .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg,#FFFFFF,#C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+
+        .content { padding: 80px 60px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 36px; font-weight: 700; margin-bottom: 40px; color: #fff; }
+        
+        .products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .product-card { background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.15); border-radius: 24px; padding: 40px; transition: all 0.3s; }
+        .product-card:hover { background: rgba(124,58,237,0.15); transform: translateY(-8px); }
+        .product-name { font-size: 24px; font-weight: 600; margin-bottom: 16px; }
+        .product-desc { color: var(--text-muted); margin-bottom: 20px; }
+        .product-price { font-size: 28px; font-weight: 700; color: #A5B4FC; margin-bottom: 24px; }
+        .product-features { list-style: none; margin-bottom: 24px; }
+        .product-features li { padding: 8px 0; color: var(--text-muted); }
+        .product-features li::before { content: "✓"; color: #22C55E; margin-right: 10px; }
+        .product-btn { display: inline-block; background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white; padding: 14px 32px; border-radius: 30px; text-decoration: none; font-weight: 600; }
+
+        .process { background: rgba(124,58,237,0.05); border-radius: 24px; padding: 50px; margin-top: 60px; }
+        .process-steps { display: flex; justify-content: space-between; margin-top: 40px; }
+        .step { text-align: center; flex: 1; position: relative; }
+        .step-num { width: 50px; height: 50px; background: linear-gradient(135deg,var(--primary),var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: space-between; justify-content: center; font-weight: 700; margin: 0 auto 16px; }
+        .step h4 { margin-bottom: 8px; }
+        .step p { font-size: 14px; color: var(--text-muted); }
+        .step::after { content: "→"; position: absolute; right: -10px; top: 20px; color: var(--text-muted); }
+        .step:last-child::after { display: none; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .feature-item { background: rgba(124,58,237,0.05); padding: 30px; border-radius: 16px; text-align: center; }
+        .feature-item h3 { font-size: 18px; margin-bottom: 12px; }
+        .feature-item p { font-size: 14px; color: var(--text-muted); }
+
+        .contact-section { padding: 100px 60px; background: linear-gradient(135deg,var(--primary),var(--primary-light)); text-align: center; }
+        .contact-section h2 { font-size: 42px; margin-bottom: 20px; }
+        .contact-section p { font-size: 18px; opacity: 0.9; margin-bottom: 40px; }
+        .contact-btn { display: inline-block; background: white; color: var(--primary); padding: 18px 56px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 16px; margin-left: 10px; }
+        .contact-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0; }
+        .contact-card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 28px 36px; min-width: 200px; transition: 0.3s; }
+        .contact-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+        .contact-card .card-icon { margin-bottom: 10px; }
+        .contact-card .card-label { font-size: 13px; opacity: 0.8; margin-bottom: 6px; }
+        .contact-card .card-value { font-size: 18px; font-weight: 700; }
+
+        footer { padding: 40px 60px; text-align: center; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(124,58,237,0.1); }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 24px; }
+            .hero, .content, .contact-section { padding: 120px 24px 60px; }
+            .hero h1 { font-size: 36px; }
+            .products, .features-grid, .process-steps { grid-template-columns: 1fr; }
+            .step::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+        <nav>
+        <a href="../index.html" class="logo" style="text-decoration:none;">EXTREME THUNDER</a>
+        <ul class="nav-links">
+        </ul>
+        <div class="lang-switch" style="margin-right:20px; margin-left:auto;">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('zh')">中</button>
+        </div>
+        <a href="../index.html" class="back-btn lang-text" data-zh="← 返回" data-en="← Back">← Back</a>
+    </nav>
+
+    <section class="hero">
+        <h1 class="lang-text" data-zh="设备销售" data-en="Equipment Sales">Equipment Sales</h1>
+        <p class="lang-text" data-zh="专业镭射设备解决方案。工厂直供，品质保证。" data-en="Professional laser tag equipment solutions. Factory direct, quality guaranteed.">Professional laser tag equipment solutions.</p>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title lang-text" data-zh="产品" data-en="Products">Products</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-name lang-text" data-zh="套餐A - 标准版" data-en="Package A - Standard">Package A - Standard</div>
+                <div class="product-desc lang-text" data-zh="适合小型场地的完整套餐，包含2把枪、12个靶。" data-en="Complete set for small venues. Includes 2 guns, 12 targets.">Complete set for small venues.</div>
+                <div class="product-price">¥68,000</div>
+                <ul class="product-features">
+                    <li class="lang-text" data-zh="2把激光枪" data-en="2 Laser Guns">2 Laser Guns</li>
+                    <li class="lang-text" data-zh="12个智能靶" data-en="12 Smart Targets">12 Smart Targets</li>
+                    <li class="lang-text" data-zh="1台控制服务器" data-en="1 Control Server">1 Control Server</li>
+                    <li class="lang-text" data-zh="成绩显示系统" data-en="Score Display System">Score Display System</li>
+                    <li class="lang-text" data-zh="基础培训" data-en="Basic Training">Basic Training</li>
+                </ul>
+                <a href="#contact" class="product-btn lang-text" data-zh="立即咨询" data-en="Inquire Now">Inquire Now</a>
+            </div>
+            <div class="product-card">
+                <div class="product-name lang-text" data-zh="套餐B - 警用版" data-en="Package B - Police Edition">Package B - Police Edition</div>
+                <div class="product-desc lang-text" data-zh="专业训练套餐，符合军警标准。" data-en="Professional training package. Meets military/police standards.">Professional training package.</div>
+                <div class="product-price">¥370,000</div>
+                <ul class="product-features">
+                    <li class="lang-text" data-zh="6把激光枪" data-en="6 Laser Guns">6 Laser Guns</li>
+                    <li class="lang-text" data-zh="78个智能靶" data-en="78 Smart Targets">78 Smart Targets</li>
+                    <li class="lang-text" data-zh="1台专业服务器" data-en="1 Pro Control Server">1 Pro Control Server</li>
+                    <li class="lang-text" data-zh="多屏显示系统" data-en="Multi-screen Display">Multi-screen Display</li>
+                    <li class="lang-text" data-zh="高级培训" data-en="Advanced Training">Advanced Training</li>
+                </ul>
+                <a href="#contact" class="product-btn lang-text" data-zh="立即咨询" data-en="Inquire Now">Inquire Now</a>
+            </div>
+        </div>
+
+        <div class="process">
+            <h2 class="section-title lang-text" data-zh="购买流程" data-en="Purchase Process">Purchase Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h4 class="lang-text" data-zh="咨询" data-en="Consultation">Consultation</h4>
+                    <p class="lang-text" data-zh="联系我们，了解需求" data-en="Contact us, understand your needs">Contact us</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h4 class="lang-text" data-zh="方案设计" data-en="Solution Design">Solution Design</h4>
+                    <p class="lang-text" data-zh="根据场地定制方案" data-en="Customized plan for your venue">Customized plan</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h4 class="lang-text" data-zh="报价签约" data-en="Quote & Contract">Quote & Contract</h4>
+                    <p class="lang-text" data-zh="确认价格，签订合同" data-en="Confirm price, sign agreement">Confirm & Sign</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h4 class="lang-text" data-zh="生产发货" data-en="Production & Delivery">Production</h4>
+                    <p class="lang-text" data-zh="工厂生产，物流发货" data-en="Factory production, logistics">Production</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <h4 class="lang-text" data-zh="安装培训" data-en="Installation & Training">Installation</h4>
+                    <p class="lang-text" data-zh="现场安装，人员培训" data-en="On-site setup, staff training">Setup & Training</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title lang-text" data-zh="为什么选择我们" data-en="Why Choose Us" style="margin-top:60px;">Why Choose Us</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3 class="lang-text" data-zh="🏭 工厂直供" data-en="🏭 Factory Direct">🏭 Factory Direct</h3>
+                <p class="lang-text" data-zh="15年制造经验，竞争力价格" data-en="15 years manufacturing experience, competitive pricing">15 years experience</p>
+            </div>
+            <div class="feature-item">
+                <h3 class="lang-text" data-zh="🔧 品质保证" data-en="🔧 Quality Assurance">🔧 Quality Assurance</h3>
+                <p class="lang-text" data-zh="ISO认证，严格品控" data-en="ISO certified, strict quality control">ISO certified</p>
+            </div>
+            <div class="feature-item">
+                <h3 class="lang-text" data-zh="🛠️ 售后支持" data-en="🛠️ After-Sales Support">🛠️ After-Sales</h3>
+                <p class="lang-text" data-zh="1年保修，终身维护" data-en="1-year warranty, lifetime maintenance">1-year warranty</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="lang-text" data-zh="联系我们" data-en="Contact Us">Contact Us</h2>
+        <p class="lang-text" data-zh="开启您的镭射之旅" data-en="Start Your Laser Tag Journey">Start Your Laser Tag Journey</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="card-label">电话</div>
+            <div class="card-value"><a href="tel:13761880006" style="color:white;text-decoration:none;">137 6188 0006</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div class="card-label">微信</div>
+            <div class="card-value">ET-HANGZHOU</div>
+          </div>
+          <div class="contact-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="card-label">邮箱</div>
+            <div class="card-value" style="font-size:15px;">extremethunder@qq.com</div>
+          </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 EXTREME THUNDER | Hangzhou Jiting Culture & Sports Co., Ltd.</p>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+            document.querySelectorAll('.lang-text').forEach(el => {
+                if (lang === 'en' && el.dataset.en) el.textContent = el.dataset.en;
+                else if (lang === 'zh' && el.dataset.zh) el.textContent = el.dataset.zh;
+            });
+        }
+        setLang('en');
+    </script>
+</body>
+</html>
